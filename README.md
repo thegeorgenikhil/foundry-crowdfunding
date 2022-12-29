@@ -6,7 +6,7 @@ This contract is taken from [here](https://github.com/adrianhajdin/project_crowd
 
 If you are new to Foundry, I would recommend you to go through the [Foundry Book](https://book.getfoundry.sh/).
 
-Also this cheat sheet is very helpful - [Foundry Cheat Sheet](https://github.com/dabit3/foundry-cheatsheet). 
+Also this cheat sheet is very helpful - [Foundry Cheat Sheet](https://github.com/dabit3/foundry-cheatsheet).
 
 ## Prerequisites
 
@@ -123,4 +123,14 @@ export ETHERSCAN_KEY=<etherscan-api-key>
 
 ```bash
 forge create --rpc-url $GOERLI_URL --private-key $PRIVATE_KEY src/CrowdFunding.sol:CrowdFunding --etherscan-api-key $ETHERSCAN_KEY --verify
+```
+
+### Interacting with the contract deployed on Goerli
+
+You can use the same commands as above, but you need to change the contract address to the one you got from the output of the above command and add `--rpc-url $GOERLI_URL` to the commands.
+
+Example for getting the campaign details
+
+```bash
+cast call $CONTRACT_ADR "getCampaign(uint256)(address,string,string,uint256,uint256,uint256,string)" 0 --rpc-url $GOERLI_URL
 ```
